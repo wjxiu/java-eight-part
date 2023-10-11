@@ -562,8 +562,9 @@ public class Test extends Date {
 ```
 很奇怪，结果是Test。
 
-在test方法中，直接调用getClass().getName()方法，返回的是Test类名。由于getClass()在Object类中定义成了final，子类不能覆盖该方法，所以，在test方法中调用getClass().getName()方法，其实就是在调用从父类继承的getClass()方法，等效于调用super.getClass().getName()方法，所以，super.getClass().getName()方法返回的也应该是Test。
-
+在test方法中，直接调用getClass().getName()方法，返回的是Test类名。由于getClass()在Object类中定义成了final，子类不能覆盖该方法，所以，在test方法中调用getClass().getName()方法，其实就是在调用从父类继承的getClass()方法，等效于调用this.getClass().getName()方法，所以，super.getClass().getName()方法返回的也应该是Test。
+> 如果子类重写了父类的方法，子类调用super.xxx()会执行父类的方法，如果没有，会执行子类继承的方法，而不是父类的方法.
+> (ackoverflow的回答)[https://stackoverflow.com/a/9790315]
 如果想得到父类的名称，应该用如下代码：
 
 ```java
