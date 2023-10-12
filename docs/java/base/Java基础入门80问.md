@@ -940,7 +940,7 @@ Allnotity():唤醒所有处入等待状态的线程，注意并不是给所有�
 
 状态：就绪，运行，synchronize阻塞，wait和sleep挂起，结束。wait必须在synchronized内部调用。
 
-调用线程的start方法后线程进入就绪状态，线程调度系统将就绪状态的线程转为运行状态，遇到synchronized语句时，由运行状态转为阻塞，当synchronized获得锁后，由阻塞转为运行，在这种情况可以调用wait方法转为挂起状态，当线程关联的代码执行完后，线程变为结束状态。
+调用线程的start方法后线程进入就绪状态，线程调度系统将就绪状态的线程转为运行状态，如果没有获取到锁的线程遇到synchronized语句（并且synchronized已经有线程获取了）时，由运行状态转为阻塞，当synchronized获得锁后，由阻塞转为运行，在这种情况可以调用wait方法转为挂起状态，当线程关联的代码执行完后，线程变为结束状态。
 
 # 51.简述synchronized和java.util.concurrent.locks.Lock的异同 ？
 
